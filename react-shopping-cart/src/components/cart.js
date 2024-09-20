@@ -140,11 +140,46 @@ export default function Cart() {
                 <p class="basketTotalTitle">Basket Total</p>
                 <p class="basketTotal">R${totalCost},00</p>
             </div>
-            `
+            `;
+
+            if (totalCost === 0 || totalCost === "0") {
+                emptyCart();
+            }
         }
         deleteButtons(); //the delete button function needs to run whenever user wants to click on it
         manageQuantity();
     }
+
+
+    //we're remmoving the cart basketTotal from the page and rendering the innerHTML if there is nothing in the cart
+    function emptyCart(){
+        
+        cartUpdate(); //update the cart shopping bag innerHTML first
+
+        //remove the local storage items
+        localStorage.removeItem("cartProducts");
+        localStorage.removeItem("cartNumber");
+        localStorage.removeItem("totalCost");
+
+        // Remove the basket total section
+        let totalAmountSection = document.querySelector(".totalAmount");
+        if (totalAmountSection) {
+            totalAmountSection.remove();
+        }
+
+        // Check if the products container exists before trying to modify it
+        let products = document.querySelector('.products');
+        if (!products) {  //If there are no cart items. NOTE: we dont want the function to loop through or render cart Items, which is why we exit the function early. If we add the innerHTML within the function it will throw an error because the products class mentioned in the return statement is looking for cartItems 
+            return; //Exit early to prevent any further attempts to render cart items that don't exist.
+        };
+
+        products.innerHTML = `
+                <div class="empty-cart">
+                    <ion-icon class="cart-outline" name="cart-outline"></ion-icon>
+                    <p>Your shopping cart is empty</p>
+                </div>
+            `;
+    };
     
 
     //cart number remains the same after page refreshes
@@ -215,9 +250,11 @@ export default function Cart() {
 
                 const newTotalCost = calculateTotalCost(cartItems);
                 updateBasketTotal(newTotalCost);
-    
+
                 displayCart(); //we want to display the rest of the cart items after user deletes an item from the cart
                 cartUpdate();
+
+
             })
         }
     }
@@ -301,18 +338,18 @@ export default function Cart() {
     return(
         <div>
 
-            <div class="products-container">
-                <div class="product-header">
-                    <h5 class="product-title">PRODUCT</h5>
-                    <h5 class="product-price">PRICE</h5>
-                    <h5 class="quantity">QUANTITY</h5>
-                    <h5 class="total">TOTAL</h5>
+            <div className="products-container">
+                <div className="product-header">
+                    <h5 className="product-title">PRODUCT</h5>
+                    <h5 className="product-price">PRICE</h5>
+                    <h5 className="quantity">QUANTITY</h5>
+                    <h5 className="total">TOTAL</h5>
                 </div>
 
-                <div class="products">
+                <div className="products">
 
-                    <div class="empty-cart">
-                        <ion-icon class="cart-outline" name="cart-outline"></ion-icon>
+                    <div className="empty-cart">
+                        <ion-icon className="cart-outline" name="cart-outline"></ion-icon>
                         <p>Your shopping cart is empty</p>
                     </div>
 
