@@ -1,0 +1,58 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+  font-weight: 100;
+  font-size: 14px;
+  background-color: #f4f3f3; /*#d8dadb */
+  color: rgb(87, 87, 87); 
+}
+
+header {
+  background-position: center;
+  height: 150px;
+  position: relative;
+}
+
+nav{
+  display: flex;      
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  border-bottom: 0.1px solid rgb(87, 87, 87);
+}
+
+nav h1{
+  font-family: "Old Standard TT", serif;
+  font-size: 60px;
+  font-weight: 600;
+  padding-left: 93px;
+  display: flex;
+  color: black;
+}
+
+nav ul{
+  display: flex;              /* Use flexbox on the nav to align the container */
+  justify-content: flex-end; /* Align the container to the right */
+  padding: 10px;
+  padding-bottom: 30px;
+}
+
+ul li{
+  display: inline-flex;      /* Display the paragraphs in a line */
+  align-items: center;
+  margin: 0 20px;           /* Add space between paragraphs */
+  font-size: 16px;
+  padding-top: 20px;
+}
+
+ul li a{
+  text-decoration: none;
+  color: black;
+}
+
+

@@ -1,0 +1,150 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+  font-weight: 100;
+  font-size: 14px;
+  background-color: #f4f3f3; /*#d8dadb */
+  color: rgb(87, 87, 87); 
+}
+
+
+  
+ 
+  /* ---------- Cart Page ------------*/
+  
+  .products-container{
+    max-width: 80%;
+    justify-content: space-around;
+    margin: 0 auto;
+    /* margin-top: 50px; */
+    padding-top: 200px;
+  }
+  
+  .product-header {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    border-bottom: 4px solid lightgrey;
+    margin: 0 auto; /* This centers the elements */
+    justify-content: space-between;
+  }
+  
+  .product-title{
+    width: 45%;
+  }
+  
+  .product-price{
+    width: 5%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .total {
+    width: 10%;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+  }
+  
+  .empty-cart{
+    max-width: 80%;
+    justify-content: space-around;
+    padding-top: 100px;
+  }
+  
+  .cart-outline{
+    width: 30px;
+    height: 30px;
+    padding-bottom: 10px;
+  }
+  
+  .empty-cart p{
+    text-transform: uppercase;
+  }
+  
+  
+  /* ---------- javascript html ------------*/
+  .productContainer{
+    display: flex;
+  }
+  
+  .product{
+    width: 35%;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .product img{
+    width: 100px;
+    height: 70px;
+  }
+  
+  .price p{
+   padding-right: 10px;
+  }
+  
+  .price, .item-quantity, .cart-total {
+    width: 24%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid lightgrey;
+  }
+  
+  .product ion-icon{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .item-quantity ion-icon{
+    width: 40%;
+    cursor: pointer;
+  }
+  
+  .decrease{
+    width: 18px;
+    height: 18px;
+  }
+  
+  .increase{
+    width: 18px;
+    height: 18px;
+  }
+  
+  .item-quantity{
+    justify-content: center ;
+    /* background-color: blueviolet; */
+    padding-left: 40px;
+  }
+  
+  .cart-total{
+    justify-content: flex-end;
+  }
+  
+  
+  .totalAmount{
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .basketTotalTitle{
+    justify-content: flex-end;
+  }
+  
+  .basketTotal{
+    padding-left: 25px;
+  }
