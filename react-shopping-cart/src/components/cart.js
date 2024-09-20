@@ -140,6 +140,10 @@ export default function Cart() {
                 <p class="basketTotalTitle">Basket Total</p>
                 <p class="basketTotal">R${totalCost},00</p>
             </div>
+
+            <div class="checkout">
+                <button>Checkout</button>
+            </div>
             `;
 
             if (totalCost === 0 || totalCost === "0") {
@@ -148,6 +152,7 @@ export default function Cart() {
         }
         deleteButtons(); //the delete button function needs to run whenever user wants to click on it
         manageQuantity();
+        //checkoutButton();
     }
 
 
@@ -329,9 +334,23 @@ export default function Cart() {
             })
         }
     
+    };
+
+
+    function checkoutButton(){
+        let button = document.querySelector(".checkout button");
+
+        button.addEventListener("click", () => {
+            //console.log('I am clicked')
+
+            button.style.backgroundColor = 'rgb(240, 240, 240)';
+            button.style.border = '2px solid black';
+            button.innerHTML = `<p style="color: black; background-color: rgb(240, 240, 240);">Processing..</p>`;
+        })
     }
 
     displayCart();
+    checkoutButton();
     
    })
 

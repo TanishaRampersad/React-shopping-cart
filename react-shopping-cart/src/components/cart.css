@@ -154,3 +154,16 @@
     padding-left: 25px;
   }
 
+  .checkout {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 50px;
+  }
+
+  .checkout button{
+    padding: 10px 25px;
+    background-color:rgb(38, 37, 37);
+    color: rgb(237, 237, 237);
+    border-radius: 2px;
+    /* color: rgb(240, 240, 240); */
+  }
