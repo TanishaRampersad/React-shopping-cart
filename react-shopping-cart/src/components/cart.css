@@ -70,6 +70,11 @@
   .empty-cart p{
     text-transform: uppercase;
   }
+
+  .empty-cart ion-icon{
+    width: 30px;
+    height: 30px;
+  }
   
   
   /* ---------- javascript html ------------*/
