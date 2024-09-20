@@ -1,12 +1,151 @@
 import { useEffect } from 'react';
 import '../components/cart.css';
+
+
+
+// import midnight from '../images/midnight-blue.jpg';
+// import grey from '../images/grey-suit.jpg';
+// import black from'../images/black-suit.jpg';
+// import beige from'../images/light-beige-suit.jpg';
+// import allblack from'../images/allblack-suit.jpg';
+// import lightgrey from'../images/light-grey suit.jpg';
+// import darkBeige from'../images/dark-beige-suit.jpg';
+// import darkBlue from'../images/dark-blue-suit.jpg';
+// import cream from'../images/cream-suit.jpg';
+// import green from'../images/green-suit.jpg';
+
+//import images from '../images';
 //import Home from '../components/home';
 //import { Link } from 'react-router-dom';
 
 
 
+// let product = [
+//     {
+//         name: "Midnight Blue Suit",
+//         tag: 'midnight-blue-suit',
+//         price: 4999.00,
+//         inCart: 0,
+//         image: midnight
+//     },
+//     {
+//         name: "Grey Suit",
+//         tag: 'grey-suit',
+//         price: 3699.00,
+//         inCart: 0,
+//         image: grey
+//     },
+//     {
+//         name: "Black Suit",
+//         tag: 'black-suit',
+//         price: 4699.00,
+//         inCart: 0,
+//         image: black
+//     },
+//     {
+//         name: "Light Beige Suit",
+//         tag: 'light-beige-suit',
+//         price: 3599.00,
+//         inCart: 0,
+//         image: beige
+//     },
+//     {
+//         name: "All Black Suit",
+//         tag: 'allblack-suit',
+//         price: 4999.00,
+//         inCart: 0,
+//         image: allblack
+//     },
+//     {
+//         name: "Light Grey Suit",
+//         tag: 'light-grey-suit',
+//         price: 4199.00,
+//         inCart: 0,
+//         image: lightgrey
+//     },
+//     {
+//         name: "Dark Beige Suit",
+//         tag: 'dark-beige-suit',
+//         price: 4999.00,
+//         inCart: 0,
+//         image: darkBeige
+//     },
+//     {
+//         name: "Dark Blue Suit",
+//         tag: 'dark-blue-suit',
+//         price: 5299.00,
+//         inCart: 0,
+//         image: darkBlue
+//     },
+//     {
+//         name: "Cream Suit",
+//         tag: 'cream-suit',
+//         price: 4299.00,
+//         inCart: 0,
+//         image: cream
+//     },
+//     {
+//         name: "Green Suit",
+//         tag: 'green-suit',
+//         price: 4699.00,
+//         inCart: 0,
+//         image: green
+//     },
+// ]
+
+
 export default function Cart() {
-    useEffect( () => {
+   useEffect( () => {
+
+    function displayCart(){
+        let cartProducts = localStorage.getItem("cartProducts");
+        cartProducts = JSON.parse(cartProducts);
+        let totalCost = localStorage.getItem("totalCost");
+    
+        let products = document.querySelector(".products");
+    
+        if(cartProducts && products){
+            products.innerHTML = '';
+            
+            Object.values(cartProducts).forEach( item => {
+                products.innerHTML += `
+                <div class="productContainer">
+    
+                    <div class="product">
+                        <ion-icon class="close-circle" name="close-circle-outline"></ion-icon>
+                        <img src="../images/${item.tag}.jpg" alt="${item.name}"/>
+                        <span>${item.name}</span>
+                    </div>
+    
+                    <div class="price">
+                        <p>R${item.price},00</p>
+                    </div>
+    
+                    <div class="item-quantity">
+                        <ion-icon class="decrease" name="arrow-back-circle"></ion-icon>
+                        <p>${item.inCart}</p>
+                        <ion-icon class="increase" name="arrow-forward-circle"></ion-icon>
+                    </div>
+    
+                    <div class="cart-total">
+                        <p>R${item.inCart * item.price},00</p>
+                    </div>
+    
+                </div>
+                `
+            });
+    
+            products.innerHTML += `
+            <div class="totalAmount">
+                <p class="basketTotalTitle">Basket Total</p>
+                <p class="basketTotal">R${totalCost},00</p>
+            </div>
+            `
+        }
+        deleteButtons(); //the delete button function needs to run whenever user wants to click on it
+        manageQuantity();
+    }
+    
 
     //cart number remains the same after page refreshes
     function cartUpdate(){
@@ -18,201 +157,146 @@ export default function Cart() {
     }
 
 
+    // Update the total cart number in local storage
+    function updateCartNumber(newCount) {
+        localStorage.setItem("cartNumber", newCount);
+        document.querySelector(".cart span").textContent = newCount;
+    }
 
-//add the product items to localstorage and update inCart number
-function cartProducts(product){
-        let cartProducts = localStorage.getItem("cartProducts");
-        cartProducts = JSON.parse(cartProducts);
 
-            if(cartProducts != null){
+    // Update the total cart number in local storage
+    function updateTotalCost(newCost) {
+        localStorage.setItem("totalCost", newCost);
+        document.querySelector(".cart-total").textContent = newCost;
+    }
 
-                if(cartProducts[product.tag] === undefined){
-                    cartProducts = {
-                        ...cartProducts,
-                        [product.tag]: product
-                    }
-                }
-                cartProducts[product.tag].inCart += 1;
-            } else {
-                product.inCart = 1;
 
-                cartProducts = {
-                    [product.tag]: product
-                }
-            }
-            localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
-        };
+    function calculateTotalCost(cartProducts) {
+        let total = 0;
+        Object.values(cartProducts).forEach(item => {
+            total += item.price * item.inCart;
+        });
+        localStorage.setItem("totalCost", total);
+        return total;
+    }
 
-        function cartNumbers(product, action) {
-            let productNumber = localStorage.getItem("cartNumber");
-            productNumber = parseInt(productNumber);
+    function updateBasketTotal(total) {
+        document.querySelector(".basketTotal").textContent = `R${total},00`;
+    }
 
-            if(action === "decrease"){
-                localStorage.setItem("cartNumber", productNumber - 1);
-                document.querySelector(".cart span").textContent = productNumber - 1;
-            } else if(productNumber){
-                localStorage.setItem("cartNumber", productNumber + 1)
-                document.querySelector('.cart span').textContent = productNumber + 1;
-            } else {
-                localStorage.setItem("cartNumber", 1)
-                document.querySelector('.cart span').textContent = 1;
-            }
-            cartProducts(product);
+
+
+
+    
+    //delete button for all items in cart
+    function deleteButtons(){
+        let deleteButton = document.querySelectorAll('.product ion-icon')
+        let productNumbers = parseInt(localStorage.getItem("cartNumber"));
+        let cartItems = localStorage.getItem("cartProducts");
+        cartItems = JSON.parse(cartItems);
+        let cartCost = parseFloat(localStorage.getItem("totalCost"));
+    
+        //let productName;
+    
+    
+        for(let i = 0; i < deleteButton.length; i++){
+            deleteButton[i].addEventListener("click", () => {
+                let productName = deleteButton[i].parentElement.textContent.trim().toLowerCase().replace(/ /g, "-");
+                // console.log(productName);
+    
+                localStorage.setItem("cartNumber", productNumbers - cartItems[productName].inCart)
+                localStorage.setItem("totalCost", cartCost - (cartItems[productName].price * cartItems[productName].inCart) )
+    
+                delete cartItems[productName];
+                
+                document.querySelector(".cart span").textContent = productNumbers;
+    
+                localStorage.setItem("cartProducts", JSON.stringify(cartItems));
+
+                const newTotalCost = calculateTotalCost(cartItems);
+                updateBasketTotal(newTotalCost);
+    
+                displayCart(); //we want to display the rest of the cart items after user deletes an item from the cart
+                cartUpdate();
+            })
         }
+    }
+    
+    
 
 
-        function totalCost(product, action) {
-            let totalCost = localStorage.getItem("totalCost")
-
-            if(action === 'decrease'){
-                localStorage.setItem("totalCost", +totalCost - product.price)
-            } else if(totalCost != null){
-                localStorage.setItem("totalCost", +totalCost + product.price)
-            } else {
-                localStorage.setItem("totalCost", product.price)
-            }
-        };
-
-
-        function displayCart(){
-            let cartProducts = localStorage.getItem("cartProducts");
-            cartProducts = JSON.parse(cartProducts);
-            let totalCost = localStorage.getItem("totalCost");
-        
-            let products = document.querySelector(".products");
-        
-            if(cartProducts && products){
-                products.innerHTML = '';
-        
-                Object.values(cartProducts).map( item => {
-                    products.innerHTML += `
-                    <div class="productContainer">
-        
-                        <div class="product">
-                            <ion-icon class="close-circle" name="close-circle-outline"></ion-icon>
-                            <img src="./images/${item.tag}.jpg" alt="${item.name}"/>
-                            <span>${item.name}</span>
-                        </div>
-        
-                        <div class="price">
-                            <p>R${item.price},00</p>
-                        </div>
-        
-                        <div class="item-quantity">
-                            <ion-icon class="decrease" name="arrow-back-circle"></ion-icon>
-                            <p>${item.inCart}</p>
-                            <ion-icon class="increase" name="arrow-forward-circle"></ion-icon>
-                        </div>
-        
-                        <div class="cart-total">
-                            <p>R${item.inCart * item.price},00</p>
-                        </div>
-        
-                    </div>
-                    `
-                });
-        
-                products.innerHTML += `
-                <div class="totalAmount">
-                    <p class="basketTotalTitle">Basket Total</p>
-                    <p class="basketTotal">R${totalCost},00</p>
-                </div>
-                `
-            }
-            deleteButtons(); //the delete button function needs to run whenever user wants to click on it
-            manageQuantity();
-        };
-
-
-        //delete button for all items in cart
-        function deleteButtons(){
-            let deleteButton = document.querySelectorAll('.product ion-icon')
-            let productNumbers = parseInt(localStorage.getItem("cartNumber"));
-            let cartItems = localStorage.getItem("cartProducts");
-            cartItems = JSON.parse(cartItems);
-            let cartCost = parseFloat(localStorage.getItem("totalCost"));
-
-            let productName;
-
-
-            for(let i = 0; i < deleteButton.length; i++){
-                deleteButton[i].addEventListener("click", () => {
-                    productName = deleteButton[i].parentElement.textContent.trim().toLowerCase().replace(/ /g, "-");
-                    // console.log(productName);
-
-                    localStorage.setItem("cartNumber", productNumbers - cartItems[productName].inCart)
-                    localStorage.setItem("totalCost", cartCost - (cartItems[productName].price * cartItems[productName].inCart) )
-
-                    delete cartItems[productName];
+    
+    //increase or decrease items in cart
+    function manageQuantity(){
+        let decrease = document.querySelectorAll(".decrease");
+        let increase = document.querySelectorAll(".increase");
+        let productsInCart = localStorage.getItem("cartProducts");
+        //let totalCost = localStorage.getItem("totalCost");
+        //let cartNumber = localStorage.getItem('cartNumber');
+        //cartNumber = parseInt(cartNumber); // Ensure it's an integer
+    
+        productsInCart = JSON.parse(productsInCart)
+        //let itemNumber = 0;
+    
+        for(let i = 0; i < decrease.length; i++) {
+            decrease[i].addEventListener("click", () => {
+    
+                //itemNumber = decrease[i].parentElement.querySelector(".item-quantity p").textContent; //grab the number value between the arrows
+                //console.log(itemNumber)
+    
+                let itemName = decrease[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '-').trim();
+                //console.log(itemName);
+    
+                if(productsInCart[itemName].inCart > 1){
+                    productsInCart[itemName].inCart -= 1; //change the local storage InCart 
+                    //cartNumber( productsInCart[itemName], "decrease"); //change local storage overall cart Number
+                    updateCartNumber(parseInt(localStorage.getItem("cartNumber")) - 1);
+                    updateTotalCost( productsInCart[itemName], "decrease"); //change the local storage total Cost
+                    localStorage.setItem("cartProducts", JSON.stringify(productsInCart));
                     
-                    document.querySelector(".cart span").textContent = productNumbers;
+                    // Update total cost
+                    const newTotalCost = calculateTotalCost(productsInCart);
+                    updateBasketTotal(newTotalCost);
 
-                    localStorage.setItem("cartProducts", JSON.stringify(cartItems));
+                    displayCart(); //display rest of the items in cart
+                }
+            })
+        }
+    
+    
+    
+        for(let i = 0; i < increase.length; i++) {
+            increase[i].addEventListener("click", () => {
+                //itemNumber = increase[i].parentElement.querySelector(".item-quantity p").textContent; //grab the number value between the arrows
+                //console.log(itemNumber)
+    
+                let itemName = increase[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '-').trim();
+                //console.log(itemName);
+    
+                if(productsInCart[itemName].inCart >= 1){
+                    productsInCart[itemName].inCart += 1; //change the local storage InCart 
+                    //cartNumber( productsInCart[itemName]); //change local storage overall cart Number
+                    updateCartNumber(parseInt(localStorage.getItem("cartNumber")) + 1);
+                    updateTotalCost( productsInCart[itemName]); //change the local storage total Cost
+                    localStorage.setItem("cartProducts", JSON.stringify(productsInCart));
 
-                    displayCart(); //we want to display the rest of the cart items after user deletes an item from the cart
-                    cartUpdate();
-                })
-            }
-        };
+                    // Update total cost
+                    const newTotalCost = calculateTotalCost(productsInCart);
+                    updateBasketTotal(newTotalCost);
 
+                    displayCart(); //display rest of the items in cart
+                }
+                //document.querySelector('.cart span').textContent = cartNumber;
+    
+                
+            })
+        }
+    
+    }
 
-        //increase or decrease items in cart
-        function manageQuantity(){
-            let decrease = document.querySelectorAll(".decrease");
-            let increase = document.querySelectorAll(".increase");
-            let productsInCart = localStorage.getItem("cartProducts");
-            let cartNumber = localStorage.getItem('cartNumber');
-            cartNumber = parseInt(cartNumber); // Ensure it's an integer
-
-            productsInCart = JSON.parse(productsInCart)
-            let itemNumber = 0;
-
-            for(let i = 0; i < decrease.length; i++) {
-                decrease[i].addEventListener("click", () => {
-
-                    itemNumber = decrease[i].parentElement.querySelector(".item-quantity p").textContent; //grab the number value between the arrows
-                    //console.log(itemNumber)
-
-                    let itemName = decrease[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '-').trim();
-                    //console.log(itemName);
-
-                    if(productsInCart[itemName].inCart > 1){
-                        productsInCart[itemName].inCart -= 1; //change the local storage InCart 
-                        cartNumber( productsInCart[itemName], "decrease"); //change local storage overall cart Number
-                        totalCost( productsInCart[itemName], "decrease"); //change the local storage total Cost
-                        localStorage.setItem("cartProducts", JSON.stringify(productsInCart));
-                        displayCart(); //display rest of the items in cart
-                    }
-                })
-            }
-
-
-
-            for(let i = 0; i < increase.length; i++) {
-                increase[i].addEventListener("click", () => {
-                    itemNumber = increase[i].parentElement.querySelector(".item-quantity p").textContent; //grab the number value between the arrows
-                    //console.log(itemNumber)
-
-                    let itemName = increase[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '-').trim();
-                    //console.log(itemName);
-
-                    if(productsInCart[itemName].inCart >= 1){
-                        productsInCart[itemName].inCart += 1; //change the local storage InCart 
-                        cartNumbers( productsInCart[itemName]); //change local storage overall cart Number
-                        totalCost( productsInCart[itemName]); //change the local storage total Cost
-                        localStorage.setItem("cartProducts", JSON.stringify(productsInCart));
-                        displayCart(); //display rest of the items in cart
-                    }
-                    //document.querySelector('.cart span').textContent = cartNumber;
-
-                    
-                })
-            }
-
-        };
-
-        displayCart();
-    })
+    displayCart();
+    
+   })
 
     return(
         <div>

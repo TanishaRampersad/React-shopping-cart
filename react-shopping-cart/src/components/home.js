@@ -1,5 +1,6 @@
 import '../components/home.css';
 import { useEffect } from 'react';
+//import Cart from './cart';
 
 import midnight from '../images/midnight-blue.jpg';
 import grey from '../images/grey-suit.jpg';
