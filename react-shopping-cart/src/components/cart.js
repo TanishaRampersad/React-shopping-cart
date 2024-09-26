@@ -14,7 +14,7 @@ import '../components/cart.css';
 // import cream from'../images/cream-suit.jpg';
 // import green from'../images/green-suit.jpg';
 
-//import images from '../images';
+// import images from '../images/';
 //import Home from '../components/home';
 //import { Link } from 'react-router-dom';
 
@@ -113,7 +113,7 @@ export default function Cart() {
     
                     <div class="product">
                         <ion-icon class="close-circle" name="close-circle-outline"></ion-icon>
-                        <img src="../images/${item.tag}.jpg" alt="${item.name}"/>
+                        <img src="${item.tag}.jpg" alt="${item.name}"/>
                         <span>${item.name}</span>
                     </div>
     
@@ -152,7 +152,28 @@ export default function Cart() {
         }
         deleteButtons(); //the delete button function needs to run whenever user wants to click on it
         manageQuantity();
-        //checkoutButton();
+        checkoutButton();
+    };
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        checkoutButton();
+    });
+    
+
+    function checkoutButton(){
+        let button = document.querySelector(".checkout button");
+
+        if (button) { // Ensure button exists
+            button.addEventListener("click", () => {
+                console.log('Button clicked');
+                button.style.backgroundColor = 'rgb(240, 240, 240)';
+                button.style.border = '2px solid black';
+                button.innerHTML = `<p style="color: black; background-color: rgb(240, 240, 240);">Processing..</p>`;
+            });
+        } else {
+            console.error("Button not found");
+        }
     }
 
 
@@ -336,18 +357,6 @@ export default function Cart() {
     
     };
 
-
-    function checkoutButton(){
-        let button = document.querySelector(".checkout button");
-
-        button.addEventListener("click", () => {
-            //console.log('I am clicked')
-
-            button.style.backgroundColor = 'rgb(240, 240, 240)';
-            button.style.border = '2px solid black';
-            button.innerHTML = `<p style="color: black; background-color: rgb(240, 240, 240);">Processing..</p>`;
-        })
-    }
 
     displayCart();
     checkoutButton();

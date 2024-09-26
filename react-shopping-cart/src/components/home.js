@@ -2,12 +2,12 @@ import '../components/home.css';
 import { useEffect } from 'react';
 //import Cart from './cart';
 
-import midnight from '../images/midnight-blue.jpg';
+import midnight from '../images/midnight-blue-suit.jpg';
 import grey from '../images/grey-suit.jpg';
 import black from'../images/black-suit.jpg';
 import beige from'../images/light-beige-suit.jpg';
 import allblack from'../images/allblack-suit.jpg';
-import lightgrey from'../images/light-grey suit.jpg';
+import lightgrey from'../images/light-grey-suit.jpg';
 import darkBeige from'../images/dark-beige-suit.jpg';
 import darkBlue from'../images/dark-blue-suit.jpg';
 import cream from'../images/cream-suit.jpg';
