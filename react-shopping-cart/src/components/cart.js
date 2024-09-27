@@ -3,97 +3,6 @@ import '../components/cart.css';
 
 
 
-// import midnight from '../images/midnight-blue.jpg';
-// import grey from '../images/grey-suit.jpg';
-// import black from'../images/black-suit.jpg';
-// import beige from'../images/light-beige-suit.jpg';
-// import allblack from'../images/allblack-suit.jpg';
-// import lightgrey from'../images/light-grey suit.jpg';
-// import darkBeige from'../images/dark-beige-suit.jpg';
-// import darkBlue from'../images/dark-blue-suit.jpg';
-// import cream from'../images/cream-suit.jpg';
-// import green from'../images/green-suit.jpg';
-
-// import images from '../images/';
-//import Home from '../components/home';
-//import { Link } from 'react-router-dom';
-
-
-
-// let product = [
-//     {
-//         name: "Midnight Blue Suit",
-//         tag: 'midnight-blue-suit',
-//         price: 4999.00,
-//         inCart: 0,
-//         image: midnight
-//     },
-//     {
-//         name: "Grey Suit",
-//         tag: 'grey-suit',
-//         price: 3699.00,
-//         inCart: 0,
-//         image: grey
-//     },
-//     {
-//         name: "Black Suit",
-//         tag: 'black-suit',
-//         price: 4699.00,
-//         inCart: 0,
-//         image: black
-//     },
-//     {
-//         name: "Light Beige Suit",
-//         tag: 'light-beige-suit',
-//         price: 3599.00,
-//         inCart: 0,
-//         image: beige
-//     },
-//     {
-//         name: "All Black Suit",
-//         tag: 'allblack-suit',
-//         price: 4999.00,
-//         inCart: 0,
-//         image: allblack
-//     },
-//     {
-//         name: "Light Grey Suit",
-//         tag: 'light-grey-suit',
-//         price: 4199.00,
-//         inCart: 0,
-//         image: lightgrey
-//     },
-//     {
-//         name: "Dark Beige Suit",
-//         tag: 'dark-beige-suit',
-//         price: 4999.00,
-//         inCart: 0,
-//         image: darkBeige
-//     },
-//     {
-//         name: "Dark Blue Suit",
-//         tag: 'dark-blue-suit',
-//         price: 5299.00,
-//         inCart: 0,
-//         image: darkBlue
-//     },
-//     {
-//         name: "Cream Suit",
-//         tag: 'cream-suit',
-//         price: 4299.00,
-//         inCart: 0,
-//         image: cream
-//     },
-//     {
-//         name: "Green Suit",
-//         tag: 'green-suit',
-//         price: 4699.00,
-//         inCart: 0,
-//         image: green
-//     },
-// ]
-
-
 export default function Cart() {
    useEffect( () => {
 
@@ -107,13 +16,13 @@ export default function Cart() {
         if(cartProducts && products){
             products.innerHTML = '';
             
-            Object.values(cartProducts).forEach( item => {
+            Object.values(cartProducts).map( item => {
                 products.innerHTML += `
                 <div class="productContainer">
     
                     <div class="product">
                         <ion-icon class="close-circle" name="close-circle-outline"></ion-icon>
-                        <img src="${item.tag}.jpg" alt="${item.name}"/>
+                        <img src="/images/${item.tag}.jpg" alt="${item.name}"/>
                         <span>${item.name}</span>
                     </div>
     
@@ -133,6 +42,7 @@ export default function Cart() {
     
                 </div>
                 `
+                return products;
             });
     
             products.innerHTML += `
