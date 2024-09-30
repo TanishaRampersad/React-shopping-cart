@@ -1,4 +1,4 @@
-import '../components/home.css';
+import './home.css';
 import { useEffect } from 'react';
 //import Cart from './cart';
 

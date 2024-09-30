@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import '../components/cart.css';
+import './cart.css';
 
 
 

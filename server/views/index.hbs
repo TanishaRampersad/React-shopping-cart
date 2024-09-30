@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Prussian & Co.</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Prussian & Co.</h1>
+                <ul>
+                    <li>
+                        <a href="/">
+                            <p>Home</p>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            <p>Log in</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <p>Help</p>
+                        </a>
+                    </li>
+
+                    <li class="cart">
+                        <a href="/cart">
+                            <p>Shopping Bag(<span>0</span>)</p>
+                        </a>
+                    </li>
+                </ul>
+        </nav>
+    </header>
+
+
+    <div class="section1">
+
+        <div class="top-section">
+            <p>New Arrivals</p>
+        </div>
+
+        <div class="men-description">
+            <h5>Suits for Men</h5>
+            <br>
+            <p>Discover our latest collection of refined men’s suits, designed for the modern gentleman. Crafted from premium fabrics with impeccable tailoring, these suits exude timeless elegance and sophistication. Perfect for formal occasions or elevating your everyday style, our new arrivals blend classic design with a contemporary touch, offering unmatched comfort and a flawless fit.</p>
+        </div>
+
+    </div>
+
+
+    <div class="image-container">
+        {{!-- <div class="image">
+            <img src="./images/midnight-blue-suit.jpg" alt="midnight blue suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Midnight Blue</p>
+                    <h4>Blazer & Trouser R4 999.00</h4>
+                </div>
+                
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="./images/grey-suit.jpg" alt="grey suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Grey</p>
+                    <h4>Blazer & Trouser R3 699.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="./images/black-suit.jpg" alt="black suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Black</p>
+                    <h4>Blazer & Trouser R4 699.00</h4>
+                </div>
+
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+        </div>
+
+        <div class="image">
+            <img src="./images//light-beige-suit.jpg" alt="light beige"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Light Beige</p>
+                    <h4>Blazer & Trouser R3 599.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+        </div>
+
+        <div class="image">
+            <img src="./images/allblack-suit.jpg" alt="all black suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>All Black</p>
+                    <h4>Blazer & Trouser R4 999.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+           
+        </div>
+
+        <div class="image">
+            <img src="./images/light-grey-suit.jpg" alt="light grey suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Light Grey</p>
+                    <h4>Blazer & Trouser R4 199.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+        </div>
+
+        <div class="image">
+            <img src="./images/dark-beige-suit.jpg" alt="dark beige suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Dark Beige</p>
+                    <h4>Blazer & Trouser R4 999.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+        </div>
+
+        <div class="image">
+            <img src="./images/dark-blue-suit.jpg" alt="dark blue suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Dark Blue</p>
+                    <h4>Blazer & Trouser R5 299.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+        </div>
+
+        <div class="image">
+            <img src="./images/cream-suit.jpg" alt="cream suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Cream</p>
+                    <h4>Blazer & Trouser R4 299.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+        </div>
+
+        <div class="image">
+            <img src="./images/green-suit.jpg" alt="green suit"/>
+
+            <div class="content">
+                <div class="text-content">
+                    <p>Green</p>
+                    <h4>Blazer & Trouser R4 699.00</h4>
+                </div>
+
+                    <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div> --}}
+
+
+    </div>
+
+    <script src="/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
