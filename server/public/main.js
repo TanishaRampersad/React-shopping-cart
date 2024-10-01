@@ -4,7 +4,7 @@ let products = [];
 
 //makign a query to the backend with a get request
 async function getProducts() {
-    const response = await axios.get('http://localhost:5000/products')
+    const response = await axios.get('https://react-shopping-cart-gamma-three.vercel.app/products')
     console.log(response.data)
 
     products = response.data.products
