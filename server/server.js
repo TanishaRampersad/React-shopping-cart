@@ -1,4 +1,5 @@
 const express = require('express');
+// const serverless = require('serverless-http');
 const path = require('path');
 
 const app = express();
@@ -18,9 +19,9 @@ app.set('view engine', 'hbs') //the view engine we use is hbs instead of html. T
 //     res.render('cart')
 // });
 
-app.use('/', require('./routes/pages')); //any routes that start with "/" node.js will to go routes/pages
+app.use('/', require('./api/pages')); //any routes that start with "/" node.js will to go routes/pages
 
-app.use('/products', require('./routes/products'));
+app.use('/products', require('./api/products'));
 
 
 app.listen(5000, () => {

@@ -1,13 +1,13 @@
 //we created routes folder in case our project has many routes to keep track of in the server.js
 
 const express = require('express');
-const { homeCtrlFunction, cartCtrlFunction } = require('../controllers/pagesCtrlFile');
+//const serverless = require('serverless-http');
+const { productsCtrlFunction } = require('../controllers/productsCtrlFile');
 
 
 const router = express.Router();
 
-router.get('/', homeCtrlFunction)
-router.get('/cart', cartCtrlFunction)
+router.get('/', productsCtrlFunction)
 
 
 
