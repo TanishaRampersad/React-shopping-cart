@@ -40,12 +40,12 @@ function myProducts() {
     return products;
 };
 
-
-async function buyProducts(cartProducts){
+//send data to the backend
+async function buyProducts(product){
     try {
 
         const body = JSON.stringify({
-            products: cartProducts
+            products: product
         })
 
         const response = await axios.post(`${host}/checkout` , body, {  //post() is to send data to the backend
@@ -55,8 +55,7 @@ async function buyProducts(cartProducts){
             }
         })
 
-        console.log(response.data)
-
+        console.log(response.data);
     } catch (error) {
         console.log(error)
     }

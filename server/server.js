@@ -1,12 +1,24 @@
 const express = require('express');
 // const serverless = require('serverless-http');
 const path = require('path');
+const cors = require('cors'); // Import cors
+const dotenv = require('dotenv'); //this helps us to store sensitive information
+
+
+dotenv.config({ path: './.env' });
+
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors()); // This will allow all origins by default
 
 const publicDirectory = path.join(__dirname, './public')
 app.use(express.static(publicDirectory)) //look into the public folder for all the css, js and other files
 
+//this is so we can use HTML forms and stuff like that
+app.use(express.urlencoded({extended: false})) //we can send data from the frontend to the backend
+app.use(express.json()) //accept as json format
 
 app.set('view engine', 'hbs') //the view engine we use is hbs instead of html. This connects to the Views folder.
 
