@@ -1,10 +1,12 @@
 const addToCart = document.getElementsByClassName("add-to-cart");
+let stage = 'dev';
 
 let products = [];
 
 //makign a query to the backend with a get request
 async function getProducts() {
-    const response = await axios.get('https://react-shopping-cart-gamma-three.vercel.app/products')
+    const host = stage === 'dev' ? 'http://localhost:5000' : 'https://prussian-and-co.vercel.app/'
+    const response = await axios.get(`${host}/products`)
     console.log(response.data)
 
     products = response.data.products
