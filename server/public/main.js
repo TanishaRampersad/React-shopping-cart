@@ -5,7 +5,7 @@ let products = [];
 
 //makign a query to the backend with a get request
 async function getProducts() {
-    const host = stage === 'dev' ? 'http://localhost:5000' : 'https://prussian-and-co.vercel.app/'
+    const host = stage === 'dev' ? 'http://localhost:5000' : 'https://prussian-and-co.vercel.app'
     const response = await axios.get(`${host}/products`)
     console.log(response.data)
 
@@ -190,7 +190,7 @@ function checkoutButton(){
 
     if (button) { // Ensure button exists
         button.addEventListener("click", () => {
-            console.log('Button clicked');
+            //console.log('Button clicked');
             button.style.backgroundColor = 'rgb(240, 240, 240)';
             button.style.border = '2px solid black';
             button.innerHTML = `<p style="color: black; background-color: rgb(240, 240, 240);">Processing..</p>`;
