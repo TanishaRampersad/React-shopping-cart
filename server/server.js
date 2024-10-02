@@ -20,8 +20,8 @@ app.set('view engine', 'hbs') //the view engine we use is hbs instead of html. T
 // });
 
 app.use('/', require('./api/pages')); //any routes that start with "/" node.js will to go routes/pages
-
 app.use('/products', require('./api/products'));
+app.use('/checkout', require('./api/checkout'));
 
 
 app.listen(5000, () => {
