@@ -1,5 +1,6 @@
 
-const { productList } = require('../products')
+const { productList } = require('../products');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.checkoutCtrlFunction = async (req, res) => {
     try {
@@ -28,7 +29,8 @@ exports.checkoutCtrlFunction = async (req, res) => {
 
         //here we make the call to stripe
         const session = await stripe.checkout.sessions.create({
-
+            payment_method_types: ['card'],
+            success_url: `${req.protocol}://${req}`
         })
 
         res.status(200).json({
