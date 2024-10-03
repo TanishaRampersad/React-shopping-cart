@@ -21,7 +21,7 @@ app.use(express.urlencoded({extended: false})) //we can send data from the front
 app.use(express.json()) //accept as json format
 
 app.set('view engine', 'hbs') //the view engine we use is hbs instead of html. This connects to the Views folder.
-
+app.set('views', path.join(__dirname, 'views'));
 
 // app.get("/", (req, res) => {
 //     res.render('index')
