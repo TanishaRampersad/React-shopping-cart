@@ -310,3 +310,14 @@ button:hover{
     border-radius: 2px;
     /* color: rgb(240, 240, 240); */
   }
+
+
+  /* ---------- Checkout success ------------*/
+
+  .checkoutSuccessCtn{
+    background-color: rgb(224, 224, 224);
+    text-align: center;
+    padding: 40px;
+    border-radius: 5px;
+    margin: 0 auto;
+  }

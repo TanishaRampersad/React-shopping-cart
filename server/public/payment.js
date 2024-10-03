@@ -4,7 +4,7 @@
 
 
 stage = 'dev';
-const host = stage === 'dev' ? 'http://localhost:5000' : 'https://prussian-and-co.vercel.app/';
+const host = stage === 'dev' ? 'http://localhost:5000' : 'https://prussian-and-co.vercel.app';
 
 
 
@@ -40,23 +40,36 @@ function myProducts() {
     return products;
 };
 
-//send data to the backend
-async function buyProducts(product){
+
+
+async function buyProducts(cartProducts) {
     try {
-
-        const body = JSON.stringify({
-            products: product
-        })
-
-        const response = await axios.post(`${host}/checkout` , body, {  //post() is to send data to the backend
-            headers: {
-                Accept: 'application/json',  //acceopt json format
-                "Content-Type": 'application/json'
+        const response = await axios.post(`${host}/checkout`, {  // No need to use JSON.stringify
+            products: cartProducts
+        }, { 
+            headers: {  
+                Accept: 'application/json',
+                "Content-Type": "application/json"
             }
-        })
+        });
 
         console.log(response.data);
+
+        // Assuming the response contains the session data
+        if (response.data.status === "success") {
+            localStorage.setItem('sessionId',response.data.sessionId) //we're storing the data on the local storage
+            const result = await stripe.redirectToCheckout({
+                sessionId: response.data.session.id,
+            });
+
+            if (result.error) {
+                console.error(result.error.message);
+            }
+        } else {
+            console.error('Failed to create Stripe session.');
+        }
+       
     } catch (error) {
-        console.log(error)
+        console.log('Error:', error);
     }
 }
