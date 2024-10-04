@@ -56,7 +56,6 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const { productList } = require('../products');
-//const Email = require('../utils/email')
 //const Order = require('../models/orderModel');
 
 exports.checkoutCtrlFunction =  async (req, res) => {
@@ -121,26 +120,4 @@ exports.checkoutCtrlFunction =  async (req, res) => {
 
 exports.cartSuccessFunction = (req, res) => {
     res.render('thankyouPage');
-}
-
-exports.finishOrder = async (req, res) => {
-    const session = await stripe.checkout.sessions.retrieve(
-        req.params.id
-    )
-    console.log("My paymemnt was ", session)
-
-    if(session.payment_status === 'paid') {
-        localStorage.clear(); 
-        //save transaction into database
-
-        //send an email
-
-        return res.status(200).json({
-            success: true
-        })
-    } else {
-        res.status(200).json({
-            success:false
-        })
-    }
 }
