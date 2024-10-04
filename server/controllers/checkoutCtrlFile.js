@@ -33,8 +33,8 @@ exports.checkoutCtrlFunction =  async (req, res) => {
                                     images: [singleProductList.image]
                                 }
                             }
-       
                         })
+
                     }
                 })
             })
