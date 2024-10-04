@@ -15,6 +15,8 @@ app.use(cors()); // This will allow all origins by default
 
 const publicDirectory = path.join(__dirname, './public')
 app.use(express.static(publicDirectory)) //look into the public folder for all the css, js and other files
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 
 //this is so we can use HTML forms and stuff like that
 app.use(express.urlencoded({extended: false})) //we can send data from the frontend to the backend

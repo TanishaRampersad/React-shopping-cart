@@ -1,62 +1,8 @@
 
-// const { productList } = require('../products');
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
-// exports.checkoutCtrlFunction = async (req, res) => {
-//     try {
-//         //console.log(req.body.products);
-//         const productsFromFrontend = req.body.products;
-//         console.log(productList)
-
-//          function productsToBuy(){
-//             let products = [];
-
-//             productList.forEach( singleProductList => {  //we're looping through the product.js file 
-//                 productsFromFrontend.forEach(singleProductFrontend => {   //we're also looping through the products from the payment.js file
-//                     if(singleProductList.tag === singleProductFrontend.tag) {
-//                         products.push({
-//                             name: singleProductList.name,
-//                             description: singleProductList.description,
-//                             images: [singleProductList.image],
-//                             amount: singleProductList.price * 100,
-//                             currency: 'zar',
-//                             quantity: singleProductFrontend.inCart
-//                         })
-//                     }
-//                 })
-//             })
-//             return products;
-//         }
-
-//         //here we make the call to stripe
-//         const session = await stripe.checkout.sessions.create({
-//             payment_method_types: ['card'],
-//             success_url: `${req.protocol}://${req.get('host')}/checkout/success`,
-//             cancel_url: `${req.protocol}://${req.get('host')}/cart`,
-//             shipping_address_collection: {
-//                 allowed_countries: ['SA','US'],
-//             },
-//             line_items: productsToBuy()
-//         })
-
-//         res.status(200).json({
-//             status: "success",
-//             session: session
-//         })
-//     } catch (error) {
-//         //console.log(error)
-//     }
-// }
-
-
-
-
-
 //response is when the backend makes a response to the frontend (backend is responding to the frontend). Request is actually whats coming from the frontend and we need to grab it on the backend (backend requesting something from the frontend)
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const { productList } = require('../products');
-//const Order = require('../models/orderModel');
 
 exports.checkoutCtrlFunction =  async (req, res) => {
     try {
