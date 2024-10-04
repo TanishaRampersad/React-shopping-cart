@@ -318,7 +318,7 @@ function manageQuantity(){
         })
     }
 
-}
+};
 
 cartUpdate();
 displayCart();
