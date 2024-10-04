@@ -80,7 +80,7 @@ exports.checkoutCtrlFunction =  async (req, res) => {
 
                             quantity: singleProductFrontend.inCart,
                             price_data: {
-                                currency: 'usd',
+                                currency: 'zar',
                                 unit_amount: singleProductList.price * 100,
                                 product_data: {
                                     name: singleProductList.name,
@@ -103,7 +103,7 @@ exports.checkoutCtrlFunction =  async (req, res) => {
             success_url: `${req.protocol}://${req.get('host')}/checkout/success`, //if the user payment went well we want to redirect them to another page
             cancel_url: `${req.protocol}://${req.get('host')}/cart`, //this is the back button on the stripe payment page
             shipping_address_collection: {  //will show the countries that we accept on the payment page
-                allowed_countries: ['US', 'GB']
+                allowed_countries: ['ZA', 'US', 'GB']
             },
             line_items: productsToBuy(), //these are the product items that are in cart that the user wants to buy
             mode: 'payment',

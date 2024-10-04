@@ -314,10 +314,33 @@ button:hover{
 
   /* ---------- Checkout success ------------*/
 
+  .container{
+    width: 500px;
+    margin: 0 auto;
+    border: 2px solid grey;
+  }
+
   .checkoutSuccessCtn{
-    background-color: rgb(224, 224, 224);
+    /* background-color: rgb(255, 255, 255); */
     text-align: center;
     padding: 40px;
     border-radius: 5px;
     margin: 0 auto;
+  }
+
+  .checkoutSuccessCtn h1{
+    margin-bottom: 10px;
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  .checkoutSuccessCtn p{
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding-top: 8px;
+  }
+
+  .checkoutSuccessCtn a{
+    font-size: 15px;
+    
   }
