@@ -55,6 +55,8 @@ async function buyProducts(cartProducts) {
 
         console.log(response.data);
 
+        localStorage.setItem('sessionId', response.data.sessionId);
+
         // Assuming the response contains the session data
         if (response.data.status === "success") {
             localStorage.setItem('sessionId',response.data.sessionId) //we're storing the data on the local storage
@@ -72,4 +74,8 @@ async function buyProducts(cartProducts) {
     } catch (error) {
         console.log('Error:', error);
     }
+}
+
+function removeProducts(){
+
 }

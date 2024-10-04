@@ -2,13 +2,14 @@
 
 const express = require('express');
 //const serverless = require('serverless-http');
-const { checkoutCtrlFunction, cartSuccessFunction } = require('../controllers/checkoutCtrlFile');
+const { checkoutCtrlFunction, cartSuccessFunction, finishOrder } = require('../controllers/checkoutCtrlFile');
 
 
 const router = express.Router();
 
 router.post('/', checkoutCtrlFunction)
 router.get('/success', cartSuccessFunction)
+router.get('/session:id', finishOrder)
 
 
 
