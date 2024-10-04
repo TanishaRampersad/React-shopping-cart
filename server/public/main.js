@@ -138,6 +138,7 @@ function displayCart(){
         products.innerHTML = '';
 
         Object.values(cartProducts).map( item => {
+            console.log(item);
             products.innerHTML += `
             <div class="productContainer">
 
