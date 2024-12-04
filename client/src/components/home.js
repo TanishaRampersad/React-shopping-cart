@@ -319,6 +319,25 @@ export default function Home(){
                 </div>
             </div>
 
+            <footer>
+                <div class="footer">
+                    <h2>JOIN OUR NEWSLETTER</h2>
+                    <ul class="socials">
+                        <li><a href="/">TIKTOK</a></li>
+                        <li><a href="/">INSTAGRAM</a></li>
+                        <li><a href="/">FACEBOOK</a></li>
+                        <li><a href="/">YOUTUBE</a></li>
+                        <li><a href="/">PINTEREST</a></li>
+                        <li><a href="/">SPOTIFY</a></li>
+                    </ul>
+
+                    <ul class="policy">
+                        <li><a href="/">Privacy and Cookies Policy</a></li>
+                        <li><a href="/">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </footer>
+
 
         </div>
     )
