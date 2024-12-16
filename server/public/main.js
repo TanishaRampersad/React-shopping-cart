@@ -5,7 +5,7 @@ let products = [];
 
 //makign a query to the backend with a get request
 async function getProducts() {
-    const host = stage === 'dev' ? 'http://localhost:5000' : 'https://prussian-and-co.vercel.app'
+    const host = stage === 'dev' ? 'http://localhost:5000' : 'https://react-shopping-cart-rosy-alpha.vercel.app/'
     const response = await axios.get(`${host}/products`)
     console.log(response.data)
 

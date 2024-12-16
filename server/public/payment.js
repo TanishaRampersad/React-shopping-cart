@@ -4,7 +4,7 @@
 
 
 stage = 'dev';
-const host = stage === 'dev' ? 'http://localhost:5000' : 'https://prussian-and-co.vercel.app';
+const host = stage === 'dev' ? 'http://localhost:5000' : 'https://react-shopping-cart-rosy-alpha.vercel.app/';
 
 
 
