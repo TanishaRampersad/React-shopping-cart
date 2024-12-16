@@ -36,16 +36,18 @@ nav h1{
 }
 
 nav ul{
-    display: flex;              /* Use flexbox on the nav to align the container */
-    justify-content: flex-end; /* Align the container to the right */
+    display: flex;              
+    justify-content: flex-end;
     padding: 10px;
     padding-bottom: 30px;
 }
 
-ul li{
-    display: inline-flex;      /* Display the paragraphs in a line */
+nav ul li{
+    display: inline-flex;
     align-items: center;
-    margin: 0 20px;           /* Add space between paragraphs */
+    justify-content: center;
+    margin: 0 20px;
+    padding-top: 1rem;
     font-size: 16px;
 }
 
