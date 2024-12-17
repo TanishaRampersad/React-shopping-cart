@@ -16,7 +16,15 @@
     <header>
         <nav>
             <h1>Prussian & Co.</h1>
-                <ul>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-list">
+                     <!-- Close Button -->
+                    <li class="close" onclick="toggleMenu()">&times;</li> <!-- Close Button Inside -->
                     <li>
                         <a href="/">
                             <p>Home</p>
