@@ -14,7 +14,15 @@
     <header>
         <nav>
             <h1>Prussian & Co.</h1>
-                <ul>
+             <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+                <ul class="nav-list">
+                     <!-- Close Button -->
+                    <li class="close" onclick="toggleMenu()">&times;</li> <!-- Close Button Inside -->
                     <li>
                         <a href="/">
                             <p>Home</p>
@@ -198,6 +206,31 @@
 
 
     </div>
+
+    <footer>
+        <div class="footer">
+            <h2>JOIN OUR NEWSLETTER</h2>
+            <div class="inline">
+                <ul class="socials links">
+                    <li><a href="#">TIKTOK</a></li>
+                    <li><a href="#">INSTAGRAM</a></li>
+                    <li><a href="#">FACEBOOK</a></li>
+                </ul>
+
+                <ul class="socials-second links">
+                    <li><a href="#">YOUTUBE</a></li>
+                    <li><a href="#">PINTEREST</a></li>
+                    <li><a href="#">SPOTIFY</a></li>
+                </ul>
+            </div>
+           
+
+            <ul class="policy">
+                <li><a href="#">Privacy and Cookies Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <script src="/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

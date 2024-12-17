@@ -17,6 +17,14 @@ async function getProducts() {
 getProducts();
 
 
+//making nav responsive
+function toggleMenu() {
+    const navList = document.querySelector('.nav-list');
+    navList.classList.toggle('open');
+}
+
+
+
 function populateProducts() {
     const container = document.querySelector('.image-container');
 
